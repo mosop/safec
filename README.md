@@ -25,7 +25,7 @@ To deallocate memory, you must implement the `Free#free` method.
 
 ```crystal
 module SafePointer
-  include Safec::Macros
+  extend Safec::Macros
 
   safe_c_pointer Pointer(Void)
 
@@ -47,7 +47,7 @@ The `Unfree` class represents a C pointer to memory that is not automatically go
 
 ```crystal
 module SafePointer
-  include Safec::Macros
+  extend Safec::Macros
 
   safe_c_pointer Pointer(LibC::Char), free: false
 end
@@ -63,7 +63,7 @@ You can access "free" and "unfree" pointers in polymorphic way.
 
 ```crystal
 module Profile
-  include Safec::Macros
+  extend Safec::Macros
 
   safe_c_pointer Pointer(C::Profile)
 
@@ -118,7 +118,7 @@ http://usop.ninja
 
 ```crystal
 module Face
-  include Safec::Macros
+  extend Safec::Macros
 
   lib C
     struct Face

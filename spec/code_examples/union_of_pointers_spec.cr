@@ -2,7 +2,7 @@ require "../spec_helper"
 
 module Safec::CodeSamples::UnionOfPointers
   module Profile
-    include Safec::Macros
+    extend Safec::Macros
 
     lib C
       struct Profile

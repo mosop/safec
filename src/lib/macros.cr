@@ -1,11 +1,11 @@
 module Safec
-  # Includes the helper macros.
+  # Extends modules with the helper macros.
   #
   # See:
   # * `SafeCPointerMacroExample`
   # * `SafeCStructMacroExample`
   module Macros
-    macro included
+    macro extended
       # Defines the classes for wrapping C pointers.
       #
       # Defines the `Free` and `Unfree` classes for wrapping C pointers.

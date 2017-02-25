@@ -2,7 +2,7 @@ require "../spec_helper"
 
 module Safec::CodeSamples::UsingUnfreePointers
   module SafePointer
-    include Safec::Macros
+    extend Safec::Macros
 
     safe_c_pointer Pointer(LibC::Char), free: false
   end

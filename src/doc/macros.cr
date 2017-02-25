@@ -2,7 +2,7 @@ module Safec
   module Macros
     # Usage example for the `safe_c_pointer` macro.
     module SafeCPointerMacroExample
-      include Safec::Macros
+      extend Safec::Macros
 
       safe_c_pointer Pointer(Void)
 
@@ -15,7 +15,7 @@ module Safec
 
     # Usage example for the `safe_c_struct` macro.
     module SafeCStructMacroExample
-      include Safec::Macros
+      extend Safec::Macros
 
       lib C
         struct Struct

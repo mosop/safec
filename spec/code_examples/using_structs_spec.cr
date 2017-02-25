@@ -2,7 +2,7 @@ require "../spec_helper"
 
 module Safec::CodeSamples::UsingStructs
   module Face
-    include Safec::Macros
+    extend Safec::Macros
 
     lib C
       struct Face

@@ -2,7 +2,7 @@ require "../spec_helper"
 
 module Safec::CodeSamples::DeallocatingMemoryAutomatically
   module SafePointer
-    include Safec::Macros
+    extend Safec::Macros
 
     safe_c_pointer Pointer(Void)
 
