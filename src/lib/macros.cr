@@ -3,6 +3,7 @@ module Safec
   #
   # See:
   # * `SafeCPointerMacroExample`
+  # * `SafeCStructMacroExample`
   module Macros
     macro included
       # Defines the classes for wrapping C pointers.
