@@ -1,0 +1,14 @@
+name: safec
+version: 0.1.0
+
+authors:
+  - mosop
+
+crystal: 0.21.0
+
+license: MIT
+
+development_dependencies:
+  stdio:
+    github: mosop/stdio
+    version: ~> 0.1.3
