@@ -1,6 +1,8 @@
 # Safec
 
-A Crystal library for wrapping and managing native C values.
+A Crystal library for wrapping C values in its safe way.
+
+[![Build Status](https://travis-ci.org/mosop/safec.svg?branch=master)](https://travis-ci.org/mosop/safec)
 
 ## Installation
 
