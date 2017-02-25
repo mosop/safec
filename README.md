@@ -114,7 +114,7 @@ usop
 http://usop.ninja
 ```
 
-## Using Structs
+### Using Structs
 
 ```crystal
 module Face
