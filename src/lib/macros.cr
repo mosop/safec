@@ -140,7 +140,7 @@ module Safec
         # A union of the wrapper class types to specify the types as polymorphic.
         #
         # This alias was automatically defined by the Safec library.
-          alias Type = Value | Free
+          alias Type = Value | Unfree
         \{% end %}
 
         @@null : Unfree = unfree(::Pointer(::Void).null.as(\{{klass}}*))
