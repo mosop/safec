@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/mosop/safec">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/mosop/safec</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/mosop/safec/Safec" data-name="safec">
+      <a href="Safec.html">Safec</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="github.com/mosop/safec/Safec/Macros" data-name="safec::macros">
+      <a href="Safec/Macros.html">Macros</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="github.com/mosop/safec/Safec/Macros/SafeCPointerMacroExample" data-name="safec::macros::safecpointermacroexample">
+      <a href="Safec/Macros/SafeCPointerMacroExample.html">SafeCPointerMacroExample</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCPointerMacroExample/AsFree" data-name="safec::macros::safecpointermacroexample::asfree">
+      <a href="Safec/Macros/SafeCPointerMacroExample/AsFree.html">AsFree</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCPointerMacroExample/Free" data-name="safec::macros::safecpointermacroexample::free">
+      <a href="Safec/Macros/SafeCPointerMacroExample/Free.html">Free</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCPointerMacroExample/Type" data-name="safec::macros::safecpointermacroexample::type">
+      <a href="Safec/Macros/SafeCPointerMacroExample/Type.html">Type</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCPointerMacroExample/Unfree" data-name="safec::macros::safecpointermacroexample::unfree">
+      <a href="Safec/Macros/SafeCPointerMacroExample/Unfree.html">Unfree</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample" data-name="safec::macros::safecstructmacroexample">
+      <a href="Safec/Macros/SafeCStructMacroExample.html">SafeCStructMacroExample</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample/AsFree" data-name="safec::macros::safecstructmacroexample::asfree">
+      <a href="Safec/Macros/SafeCStructMacroExample/AsFree.html">AsFree</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample/Free" data-name="safec::macros::safecstructmacroexample::free">
+      <a href="Safec/Macros/SafeCStructMacroExample/Free.html">Free</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample/Type" data-name="safec::macros::safecstructmacroexample::type">
+      <a href="Safec/Macros/SafeCStructMacroExample/Type.html">Type</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample/Unfree" data-name="safec::macros::safecstructmacroexample::unfree">
+      <a href="Safec/Macros/SafeCStructMacroExample/Unfree.html">Unfree</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/mosop/safec/Safec/Macros/SafeCStructMacroExample/Value" data-name="safec::macros::safecstructmacroexample::value">
+      <a href="Safec/Macros/SafeCStructMacroExample/Value.html">Value</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>Safec</h1>
+
+<p>A Crystal library for wrapping and managing native C values.</p>
+
+<h2>Installation</h2>
+
+<p>Add this to your application's <code>shard.yml</code>:</p>
+
+<pre><code class='language-yaml'>dependencies:
+  git:
+    github: mosop/safec</code></pre>
+
+<p>&lt;a name="code_samples">&lt;/a></p>
+
+<h2>Code Samples</h2>
+
+<h3>Deallocating Memory Automatically</h3>
+
+<p>The <code>Free</code> class represents a C pointer to memory that is got free on GC finalize.</p>
+
+<p>To deallocate memory, you must implement the <code>Free#free</code> method.</p>
+
+<pre><code class='language-crystal'><span class="k">module</span> <span class="t">SafePointer</span>
+  <span class="k">include</span> <span class="t">Safec</span><span class="t">::</span><span class="t">Macros</span>
+
+  safe_c_pointer <span class="t">Pointer</span>(<span class="t">Void</span>)
+
+  <span class="k">class</span> <span class="t">Free</span>
+    <span class="k">def</span> <span class="m">free</span>(p)
+      <span class="t">LibC</span>.free p
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+p <span class="o">=</span> <span class="t">LibC</span>.malloc(<span class="n">4747</span>)
+safe <span class="o">=</span> <span class="t">SafePointer</span>.free(p)
+safe.p <span class="o">==</span> p <span class="c"># true</span></code></pre>
+
+<h3>Using "Unfree" Pointers</h3>
+
+<p>The <code>Unfree</code> class represents a C pointer to memory that is not automatically got free.</p>
+
+<pre><code class='language-crystal'><span class="k">module</span> <span class="t">SafePointer</span>
+  <span class="k">include</span> <span class="t">Safec</span><span class="t">::</span><span class="t">Macros</span>
+
+  safe_c_pointer <span class="t">Pointer</span>(<span class="t">LibC</span><span class="t">::</span><span class="t">Char</span>), free: <span class="n">false</span>
+<span class="k">end</span>
+
+p <span class="o">=</span> <span class="s">&quot;:&#41;&quot;</span>.to_unsafe
+safe <span class="o">=</span> <span class="t">SafePointer</span>.unfree(p)
+safe.p <span class="o">==</span> p <span class="c"># true</span></code></pre>
+
+<h3>Union of Pointers</h3>
+
+<p>You can access "free" and "unfree" pointers in polymorphic way.</p>
+
+<pre><code class='language-crystal'><span class="k">module</span> <span class="t">Profile</span>
+  <span class="k">include</span> <span class="t">Safec</span><span class="t">::</span><span class="t">Macros</span>
+
+  safe_c_pointer <span class="t">Pointer</span>(<span class="t">C</span><span class="t">::</span><span class="t">Profile</span>)
+
+  <span class="k">class</span> <span class="t">Free</span>
+    <span class="k">def</span> <span class="m">free</span>(p)
+      <span class="t">LibC</span>.free p
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">lib</span> <span class="t">C</span>
+    <span class="k">struct</span> <span class="t">Profile</span>
+      name : <span class="t">UInt8</span>[<span class="n">255</span>]
+      homepage : <span class="t">UInt8</span>[<span class="n">255</span>]
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+profiles <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Profile</span><span class="t">::</span><span class="t">Type</span>
+
+<span class="c"># Append a &quot;free&quot; profile.</span>
+p <span class="o">=</span> <span class="t">LibC</span>.malloc(<span class="k">sizeof</span>(<span class="t">Profile</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Profile</span>)).<span class="k">as</span>(<span class="t">Profile</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Profile</span><span class="o">*</span>)
+name <span class="o">=</span> <span class="s">&quot;mosop&quot;</span>.bytes
+homepage <span class="o">=</span> <span class="s">&quot;http://mosop.me&quot;</span>.bytes
+p.value.name <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="n">255</span>).<span class="k">new</span>{<span class="o">|</span>i<span class="o">|</span> name[i]? || <span class="n">0_u8</span>}
+p.value.homepage <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="n">255</span>).<span class="k">new</span>{<span class="o">|</span>i<span class="o">|</span> homepage[i]? || <span class="n">0_u8</span>}
+profiles <span class="o"><<</span> <span class="t">Profile</span>.free(p)
+
+<span class="c"># Append an &quot;unfree&quot; profile.</span>
+value <span class="o">=</span> <span class="t">Profile</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Profile</span>.<span class="k">new</span>
+name <span class="o">=</span> <span class="s">&quot;usop&quot;</span>.bytes
+homepage <span class="o">=</span> <span class="s">&quot;http://usop.ninja&quot;</span>.bytes
+value.name <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="n">255</span>).<span class="k">new</span>{<span class="o">|</span>i<span class="o">|</span> name[i]? || <span class="n">0_u8</span>}
+value.homepage <span class="o">=</span> <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="n">255</span>).<span class="k">new</span>{<span class="o">|</span>i<span class="o">|</span> homepage[i]? || <span class="n">0_u8</span>}
+profiles <span class="o"><<</span> <span class="t">Profile</span>.unfree(<span class="k">pointerof</span>(value))
+
+profiles.each <span class="k">do</span> <span class="o">|</span>profile<span class="o">|</span>
+  puts <span class="t">String</span>.<span class="k">new</span>(profile.p.value.name.to_unsafe)
+  puts <span class="t">String</span>.<span class="k">new</span>(profile.p.value.homepage.to_unsafe)
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>mosop
+http<span class="n">:/</span><span class="s">/mosop.me
+usop
+http:/</span><span class="s">/usop.ninja</code></pre>
+
+<h2>Using Structs</h2>
+
+<pre><code class='language-crystal'><span class="k">module</span> <span class="t">Face</span>
+  <span class="k">include</span> <span class="t">Safec</span><span class="t">::</span><span class="t">Macros</span>
+
+  <span class="k">lib</span> <span class="t">C</span>
+    <span class="k">struct</span> <span class="t">Face</span>
+      eyes : <span class="t">Char</span>
+      mouth : <span class="t">Char</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  safe_c_struct <span class="t">C</span><span class="t">::</span><span class="t">Face</span>
+
+  <span class="k">class</span> <span class="t">Free</span>
+    <span class="k">def</span> <span class="m">free</span>(p)
+      <span class="t">LibC</span>.free p
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+faces <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Face</span><span class="t">::</span><span class="t">Type</span>
+
+<span class="c"># Append a &quot;value&quot; face.</span>
+value <span class="o">=</span> <span class="t">Face</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Face</span>.<span class="k">new</span>
+value.eyes <span class="o">=</span> <span class="s">':'</span>
+value.mouth <span class="o">=</span> <span class="s">')'</span>
+faces <span class="o"><<</span> <span class="t">Face</span>.value(value)
+
+<span class="c"># Append a &quot;free&quot; face.</span>
+p <span class="o">=</span> <span class="t">LibC</span>.malloc(<span class="k">sizeof</span>(<span class="t">Face</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Face</span>)).<span class="k">as</span>(<span class="t">Face</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Face</span><span class="o">*</span>)
+p.value.eyes <span class="o">=</span> <span class="s">';'</span>
+p.value.mouth <span class="o">=</span> <span class="s">'P'</span>
+faces <span class="o"><<</span> <span class="t">Face</span>.free(p)
+
+<span class="c"># Append an &quot;unfree&quot; face.</span>
+value <span class="o">=</span> <span class="t">Face</span><span class="t">::</span><span class="t">C</span><span class="t">::</span><span class="t">Face</span>.<span class="k">new</span>
+value.eyes <span class="o">=</span> <span class="s">'X'</span>
+value.mouth <span class="o">=</span> <span class="s">'o'</span>
+faces <span class="o"><<</span> <span class="t">Face</span>.unfree(<span class="k">pointerof</span>(value))
+
+faces.each <span class="k">do</span> <span class="o">|</span>face<span class="o">|</span>
+  print face.value.eyes
+  puts face.value.mouth
+<span class="k">end</span></code></pre>
+
+<p>Output:</p>
+
+<pre><code>:)
+;<span class="t">P</span>
+<span class="t">Xo</span></code></pre>
+
+<h2>Usage</h2>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;safec&quot;</span></code></pre>
+
+<p>and see:</p>
+
+<ul><li><a href="#code_samples" target="_blank">Code Samples</a></li><li><a href="http://mosop.me/safec/Safec.html" target="_blank">API Document</a></li></ul>
+
+<h2>Release Notes</h2>
+
+<p>See <a href="https://github.com/mosop/safec/releases" target="_blank">Releases</a>.</p>
+</div>
+</body>
+</html>
